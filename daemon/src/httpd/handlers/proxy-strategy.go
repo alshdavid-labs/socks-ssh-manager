@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"socks-manager/src/cmd/httpd/appstate"
+	"socks-manager/src/httpd/appstate"
 )
 
 type ProxyStrategyBody struct {

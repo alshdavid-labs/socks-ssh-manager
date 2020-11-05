@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"socks-manager/src/cmd/httpd/appstate"
+	"socks-manager/src/httpd/appstate"
 	"sort"
 )
 

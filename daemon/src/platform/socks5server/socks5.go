@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"socks-manager/src/httpd/appstate"
 
 	"golang.org/x/net/context"
 )
@@ -49,11 +50,7 @@ type Config struct {
 	// Optional function for dialing out
 	Dial DialFunc
 
-	// ProxyList is a list of domains to use the proxy
-	ProxyList map[string]bool
-
-	// ProxyIgnoreList is a list of domain names to be ignore by the proxy
-	ProxyIgnoreList []string
+	State *appstate.State
 }
 
 // DialFunc is the function to make requests

@@ -120,8 +120,12 @@ func (s *Server) handleRequest(req *Request, conn conn) error {
 	ctx := context.Background()
 	dest := req.DestAddr
 	domainName := dest.FQDN
+	state := s.config.State
+	proxyResolve := false
 
-	proxyResolve := s.config.ProxyList[domainName]
+	if (state.ProxyStrategy === )
+
+	//s.config.ProxyList[domainName]
 
 	if proxyResolve == true {
 		fmt.Println("EXTRN: " + domainName)

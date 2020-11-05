@@ -1,0 +1,8 @@
+{
+  "clientAddress": "user@192.168.1.21",
+  "proxyStrategy": "none",
+  "proxyList": {
+    "devapi.nk.spirit.com": true
+  },
+  "proxyBypassList": {}
+}

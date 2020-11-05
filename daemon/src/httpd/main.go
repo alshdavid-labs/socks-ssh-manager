@@ -2,9 +2,9 @@ package main
 
 import (
 	"net/http"
-	"socks-manager/src/cmd/httpd/appstate"
-	"socks-manager/src/cmd/httpd/environment"
-	"socks-manager/src/cmd/httpd/handlers"
+	"socks-manager/src/httpd/appstate"
+	"socks-manager/src/httpd/environment"
+	"socks-manager/src/httpd/handlers"
 )
 
 var env = environment.NewEnvironment()

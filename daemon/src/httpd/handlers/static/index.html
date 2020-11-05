@@ -53,7 +53,8 @@
     <section>
       <h3>Command</h3>
       <code>ssh -D {PORT} {{ clientAddress || 'user@destination.comm' }}</code>
-      <button v-on:click="connect()">Connect</button>
+      <button v-if="!connected" v-on:click="connect()">Connect</button>
+      <button v-if="connected" v-on:click="disconnect()">Disconnect</button>
     </section>
     <section style="padding-top: 16px;">
       <h3>Logs</h3>
@@ -124,11 +125,19 @@
             const domain = this.bypassed.splice(i, 1)[0]
             request.delete(Urls.ProxyBypassList, { domain })
           },
-          connect() {
-            request.post(Urls.Connection, { action: 'CONNECT' })
+          async connect() {
+            await request.post(Urls.Connection, { action: 'CONNECT' })
+            while (this.connected === false) {
+              this.connected = (await request.get(Urls.Connection)).status
+              await new Promise(res => setTimeout(res, 250))
+            }
           },
-          disconnect() {
-            request.post(Urls.Connection, { action: 'DISCONNECT' })
+          async disconnect() {
+            await request.post(Urls.Connection, { action: 'DISCONNECT' })
+            while (this.connected === true) {
+              this.connected = (await request.get(Urls.Connection)).status
+              await new Promise(res => setTimeout(res, 250))
+            }
           },
         }
       })
